@@ -1,22 +1,27 @@
 from spotdl import Downloader, Song, SpotifyClient
 from spotdl.utils.ffmpeg import download_ffmpeg
-import os
+from pathlib import Path
 
-with open(".private\\user.md", "r") as user:
+beforeFolders = Path(r'C:\Users\Lean\Documents\Codes\SpotiPyDownload\.venv\SpotiPyDownload\SpotiPyDownload\SpotiPyDownload.py').parent.parent
+with open(rf"{beforeFolders}\.private\user.md", "r") as user:
     cont = 0
     for login in user:
         if cont == 0:
-            id = login
+            id = login.strip()
         elif cont == 1:
-            secret = login
+            secret = login.strip()
         cont += 1
 SpotifyClient.init(
     client_id=id,
     client_secret=secret
     )
-músicas = Song.list_from_search_term('https://open.spotify.com/intl-pt/track/1Z6Ex3aZdoom5j6LHfHIB5')
+musicurl = Song.search('https://open.spotify.com/intl-pt/track/3QTPW9FghnAxMRPXhzBli2?si=8c27fba64c6044b8')
+music = Song.list_from_search_term(musicurl)
+print(music)
+
+saveFolder = str(input('Digite um nome para pasta na qual será(ão) salvo(s) o(s) arquivo(s) -> '))
 downloader = Downloader(settings={
-    "fetch_albums": True, # Ou False, dependendo do seu uso
-    # outras configurações aqui...
+    'output': f'{saveFolder}'
+    
 })
-Downloader.download_multiple_songs(download_ffmpeg, songs=músicas)
+# downloader.download_multiple_songs(music)
