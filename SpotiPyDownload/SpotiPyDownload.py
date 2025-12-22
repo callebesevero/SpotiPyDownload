@@ -1,6 +1,5 @@
 from spotdl import Downloader, Song, SpotifyClient
 from spotdl.utils.ffmpeg import download_ffmpeg
-import os
 
 id = str(input('Qual o client do Spotify? -> ').strip())
 secret = str(input('Qual a senha do Spotify? -> ').strip())
