@@ -1,8 +1,15 @@
 from spotdl import Downloader, Song, SpotifyClient
 from spotdl.utils.ffmpeg import download_ffmpeg
+import os
 
-id = str(input('Qual o client do Spotify? -> ').strip())
-secret = str(input('Qual a senha do Spotify? -> ').strip())
+with open(".private\\user.md", "r") as user:
+    cont = 0
+    for login in user:
+        if cont == 0:
+            id = login
+        elif cont == 1:
+            secret = login
+        cont += 1
 SpotifyClient.init(
     client_id=id,
     client_secret=secret
