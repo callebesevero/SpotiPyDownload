@@ -1,6 +1,7 @@
 from spotdl import Spotdl
 from pathlib import Path
 from shutil import move
+from time import sleep
 import os
 
 print('Espere... Carregando ferramentas! 😁')
@@ -34,6 +35,8 @@ while True:
     # Get music URL
     songURL = str(input(f'Insira a URL da Playlist/Música [SAIR/S/ENTER para fechar] -> ').strip())
     if songURL.upper() in 'SAIR':
+        print('Atéeeeeeee, linda de lá pra cá!! Vulgo Isa 😁')
+        sleep(2)
         break
 
     toDownload = spotdl.search([songURL])
