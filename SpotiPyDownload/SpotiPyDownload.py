@@ -37,7 +37,7 @@ while True:
     if songURL.upper() in 'SAIR':
         print('Cante bem muito com sua lindíssima voz! \^o^/')
         sleep(1)
-        print('Atéeeeeeee, linda de lá pra cá!! Vulgo Isa (●ˇ∀ˇ●)')
+        print('Atéeeeeeee, linda de lá pra cá!! Vulgo Isa (●ˇ*ˇ●)')
         sleep(3)
         break
 
