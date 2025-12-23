@@ -7,11 +7,7 @@ from os.path import dirname, abspath, join
 from os import system
 from sys import platform
 
-console = Console()
-if platform == "win32":
-    system('chcp 65001 > nul')
-
-console.print('Espere... Carregando ferramentas! 😁')
+print('Espere... Carregando ferramentas! :)')
 
 # Auth:
 dirScript = dirname(abspath(__file__))
@@ -42,8 +38,9 @@ while True:
     # Get music URL
     songURL = str(input(f'Insira a URL da Playlist/Música [SAIR/S/ENTER para fechar] -> ').strip())
     if songURL.upper() in 'SAIR':
-        console.print('Cante bem muito com sua lindíssima voz! 🙃')
-        console.print('Atéeeeeeee, linda de lá pra cá!! Vulgo Isa 😁')
+        print('Cante bem muito com sua lindíssima voz! \^o^/')
+        sleep(1)
+        print('Atéeeeeeee, linda de lá pra cá!! Vulgo Isa (●ˇ*ˇ●)')
         sleep(3)
         break
 
