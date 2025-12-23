@@ -4,7 +4,7 @@ from shutil import move
 from time import sleep
 import os
 
-print('Espere... Carregando ferramentas! 😁')
+print('Espere... Carregando ferramentas! :)')
 
 # Auth:
 dirScript = os.path.dirname(os.path.abspath(__file__))
@@ -35,8 +35,9 @@ while True:
     # Get music URL
     songURL = str(input(f'Insira a URL da Playlist/Música [SAIR/S/ENTER para fechar] -> ').strip())
     if songURL.upper() in 'SAIR':
-        print('Cante bem muito com sua lindíssima voz! 🙃')
-        print('Atéeeeeeee, linda de lá pra cá!! Vulgo Isa 😁')
+        print('Cante bem muito com sua lindíssima voz! \^o^/')
+        sleep(1)
+        print('Atéeeeeeee, linda de lá pra cá!! Vulgo Isa (●ˇ∀ˇ●)')
         sleep(3)
         break
 
