@@ -1,13 +1,26 @@
 from spotdl import Spotdl
 from pathlib import Path
 from shutil import move
-from texto import formatar
+from os.path import dirname, abspath, join
 
-# The default spotdl auth:
-Spotdl.__init__
-id = 'f8a606e5583643beaa27ce62c48e3fc1'
-secret = 'f6f4c8f73f0649939286cf417c811607'
-spotdl = Spotdl(client_id=id, client_secret=secret)
+print('Espere... Carregando ferramentas!')
+
+# Auth:
+dirScript = dirname(abspath(__file__))
+archive = join(dirScript, "user.txt")
+with open(archive, "r") as user:
+    cont = 0
+    for login in user:
+        if cont == 0:
+            id = login.strip()
+        elif cont == 1:
+            secret = login.strip()
+        cont += 1
+spotdl = Spotdl(
+    client_id=id, 
+    client_secret=secret,
+    user_auth=False
+    )
 
 # Construct the path to \Downloads folder
 homePath = Path().home()
