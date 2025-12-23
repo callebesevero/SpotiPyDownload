@@ -1,13 +1,9 @@
 from spotdl import Spotdl
 from pathlib import Path
 from shutil import move
-from time import sleep
-from rich import Console
 from os.path import dirname, abspath, join
-from os import system
-from sys import platform
 
-print('Espere... Carregando ferramentas! :)')
+print('Espere... Carregando ferramentas!')
 
 # Auth:
 dirScript = dirname(abspath(__file__))
@@ -38,10 +34,6 @@ while True:
     # Get music URL
     songURL = str(input(f'Insira a URL da Playlist/Música [SAIR/S/ENTER para fechar] -> ').strip())
     if songURL.upper() in 'SAIR':
-        print('Cante bem muito com sua lindíssima voz! \^o^/')
-        sleep(1)
-        print('Atéeeeeeee, linda de lá pra cá!! Vulgo Isa (●ˇ*ˇ●)')
-        sleep(3)
         break
 
     toDownload = spotdl.search([songURL])
