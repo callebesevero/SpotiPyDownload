@@ -1,6 +1,7 @@
 from spotdl import Spotdl
 from pathlib import Path
 from shutil import move
+from texto import formatar
 
 # The default spotdl auth:
 Spotdl.__init__
@@ -8,10 +9,14 @@ id = 'f8a606e5583643beaa27ce62c48e3fc1'
 secret = 'f6f4c8f73f0649939286cf417c811607'
 spotdl = Spotdl(client_id=id, client_secret=secret)
 
-# Catch music URL
-songURL = str(input('Insira a URL da Playlist/Música -> '))
-toDownload = spotdl.search([songURL])
-downloaded = spotdl.download_songs(toDownload)
+# Get music URL
+while True:
+    songURL = str(input(formatar('Insira a URL da Playlist/Música [SAIR/S/ENTER para fechar] -> ', cortexto='verde')).strip())
+    if songURL.upper() in 'SAIR':
+        break
+
+    toDownload = spotdl.search([songURL])
+    downloaded = spotdl.download_songs(toDownload)
 
 # Construct the path to \Downloads folder
 homePath = Path().home()
@@ -21,6 +26,6 @@ downloadsPath = rf'{homePath}\Downloads'
 if not Path(rf'{downloadsPath}\SpotiPyDownload').exists():
     Path(rf'{downloadsPath}\SpotiPyDownload').mkdir()
 
-# Catch the path of each downloaded song
+# Get the path of each downloaded song
 for music in downloaded:
     move(music[-1], rf'{downloadsPath}\SpotiPyDownload')
