@@ -3,10 +3,12 @@ from pathlib import Path
 from shutil import move
 from time import sleep
 import os
-import io
 import sys
 
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+os.system('chcp 65001 > nul')
+
+if sys.stdout.encoding != 'utf-8':
+    sys.stdout = open(sys.stdout.fileno(), mode='w', encoding='utf-8', buffering=1)
 
 print('Espere... Carregando ferramentas! 😁')
 
