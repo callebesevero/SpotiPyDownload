@@ -2,13 +2,20 @@ from spotdl import Spotdl
 from pathlib import Path
 from shutil import move
 from time import sleep
-import os
+from rich import Console
+from os.path import dirname, abspath, join
+from os import system
+from sys import platform
 
-print('Espere... Carregando ferramentas! 😁')
+console = Console()
+if platform == "win32":
+    system('chcp 65001 > nul')
+
+console.print('Espere... Carregando ferramentas! 😁')
 
 # Auth:
-dirScript = os.path.dirname(os.path.abspath(__file__))
-archive = os.path.join(dirScript, "user.txt")
+dirScript = dirname(abspath(__file__))
+archive = join(dirScript, "user.txt")
 with open(archive, "r") as user:
     cont = 0
     for login in user:
@@ -35,8 +42,9 @@ while True:
     # Get music URL
     songURL = str(input(f'Insira a URL da Playlist/Música [SAIR/S/ENTER para fechar] -> ').strip())
     if songURL.upper() in 'SAIR':
-        print('Atéeeeeeee, linda de lá pra cá!! Vulgo Isa 😁')
-        sleep(2)
+        console.print('Cante bem muito com sua lindíssima voz! 🙃')
+        console.print('Atéeeeeeee, linda de lá pra cá!! Vulgo Isa 😁')
+        sleep(3)
         break
 
     toDownload = spotdl.search([songURL])
