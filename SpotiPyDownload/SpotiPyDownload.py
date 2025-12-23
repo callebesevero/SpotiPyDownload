@@ -1,16 +1,11 @@
 from spotdl import Spotdl
 from pathlib import Path
-
-with open(r'.private\auth.md') as auth:
-    cont = 0
-    for linha in auth:
-        if cont == 0:
-            id = linha
-        elif cont == 1:
-            secret = linha
-        cont += 1
+from shutil import move
 
 # The default spotdl auth:
+Spotdl.__init__
+id = 'f8a606e5583643beaa27ce62c48e3fc1'
+secret = 'f6f4c8f73f0649939286cf417c811607'
 spotdl = Spotdl(client_id=id, client_secret=secret)
 
 # Catch music URL
@@ -22,10 +17,10 @@ downloaded = spotdl.download_songs(toDownload)
 homePath = Path().home()
 downloadsPath = rf'{homePath}\Downloads'
 
-if 'SpotiPyDownload' not in Path(downloadsPath):
-    Path('SpotiPyDownload').mkdir()
+# Verify if 'SpotiPyDownloader' folder exists
+if not Path(rf'{downloadsPath}\SpotiPyDownload').exists():
+    Path(rf'{downloadsPath}\SpotiPyDownload').mkdir()
 
 # Catch the path of each downloaded song
 for music in downloaded:
-    print(music[-1])
-print(downloaded)
+    move(music[-1], rf'{downloadsPath}\SpotiPyDownload')
