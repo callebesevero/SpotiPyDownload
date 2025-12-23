@@ -3,6 +3,10 @@ from pathlib import Path
 from shutil import move
 from time import sleep
 import os
+import io
+import sys
+
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 print('Espere... Carregando ferramentas! 😁')
 
@@ -35,8 +39,9 @@ while True:
     # Get music URL
     songURL = str(input(f'Insira a URL da Playlist/Música [SAIR/S/ENTER para fechar] -> ').strip())
     if songURL.upper() in 'SAIR':
+        print('Cante bem muito com sua lindíssima voz! 🙃')
         print('Atéeeeeeee, linda de lá pra cá!! Vulgo Isa 😁')
-        sleep(2)
+        sleep(3)
         break
 
     toDownload = spotdl.search([songURL])
