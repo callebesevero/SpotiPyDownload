@@ -3,6 +3,8 @@ from pathlib import Path
 from shutil import move
 import os
 
+print('Espere... Carregando ferramentas! 😁')
+
 # Auth:
 dirScript = os.path.dirname(os.path.abspath(__file__))
 archive = os.path.join(dirScript, "user.txt")
