@@ -1,6 +1,4 @@
-from spotdl.search import SpotifyClient
-from spotdl import search
-from spotdl.download.downloader import DownloadManager
+from spotdl import Spotdl
 from pathlib import Path
 from shutil import move
 from dotenv import load_dotenv
@@ -13,7 +11,7 @@ load_dotenv()
 client_id=getenv("SPOTIPY_CLIENT_ID")
 client_secret=getenv('SPOTIPY_CLIENT_SECRET')
 
-spotdl = SpotifyClient.init(
+spotdl = Spotdl(
     client_id=client_id, 
     client_secret=client_secret,
     user_auth=False
@@ -29,8 +27,8 @@ while True:
     if songURL.upper() in 'SAIR':
         break
 
-    toDownload = search([songURL])
-    downloaded = DownloadManager.download_song(toDownload)
+    toDownload = spotdl.search([songURL])
+    downloaded = spotdl.download_songs(toDownload)
 
     # Get the path of each downloaded song
     for music in downloaded:
